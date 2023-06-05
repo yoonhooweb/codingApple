@@ -151,8 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
     /* gugudan();
     userFind("철수"); */
 
-    
-
 });
 
 
