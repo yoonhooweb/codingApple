@@ -27,6 +27,13 @@
 
 .btn { cursor: pointer;}
 
+.modal { 
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #eee;
+    text-align: center;
+}
+
 .black-nav {
     background: black;
     width: 100%;
