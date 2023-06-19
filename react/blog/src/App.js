@@ -6,7 +6,7 @@ function App() {
 
     let logo = "React Blog";
     let [title, reName] = useState(["남자코트 추천", "강남 우동 맛집", "react 독학"]);
-    let [count, countUp] = useState(0);
+    let [count, countUp] = useState(0, 0, 0);
     let [modal, setModal] = useState(false);
 
     return (
@@ -43,7 +43,7 @@ function App() {
                 title.map(function (value, index) {
                     return (
                         <div className='list' key={index}>
-                            <h4>{value} <span onClick={countUp(count + 1)}>❤️</span> {count} 개</h4>
+                            <h4>{value} <span onClick={() => {countUp(count + 1)}}>❤️</span> {count} 개</h4>
                             <p onClick={() => { modal == true ? setModal(false) : setModal(true) }}>2월 17일 발행</p>
                         </div>
                     )
