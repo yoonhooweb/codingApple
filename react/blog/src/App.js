@@ -26,7 +26,7 @@ function App() {
                 let sorts = [...title].sort();
                 reName(sorts);
             }}>정렬</button>
-            <div className='list'>
+            {/* <div className='list'>
                 <h4>{title[0]} <span onClick={() => { countUp(count + 1) }}>❤️</span> {count}</h4>
                 <p>2월 17일 발행</p>
             </div>
@@ -37,14 +37,23 @@ function App() {
             <div className='list'>
                 <h4>{title[2]} <span onClick={ () => { modal == true ? setModal(false) : setModal(true) }} >❤️</span> 0 개</h4>
                 <p>2월 17일 발행</p>
-            </div>
+            </div> */}
+            {
 
-            
+                title.map(function (value, index) {
+                    return (
+                        <div className='list' key={index}>
+                            <h4>{value} <span onClick={countUp(count + 1)}>❤️</span> {count} 개</h4>
+                            <p onClick={() => { modal == true ? setModal(false) : setModal(true) }}>2월 17일 발행</p>
+                        </div>
+                    )
+                })
+            }
+
             {
                 modal == true ? <Modal /> : ''
             }
-        </div>
-
+        </div >
     );
 }
 
