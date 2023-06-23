@@ -6,8 +6,9 @@ function App() {
 
     let logo = "React Blog";
     let [title, reName] = useState(["남자코트 추천", "강남 우동 맛집", "react 독학"]);
-    let [count, countUp] = useState(0, 0, 0);
+    let [count, countUp] = useState([0, 0, 0]);
     let [modal, setModal] = useState(false);
+    let [modalTitle, setModalTitle] = useState(0);
 
     return (
 
@@ -40,30 +41,38 @@ function App() {
             </div> */}
             {
 
-                title.map(function (value, index) {
+                title.map(function (v, i) {
                     return (
-                        <div className='list' key={index}>
-                            <h4>{value} <span onClick={() => {countUp(count + 1)}}>❤️</span> {count} 개</h4>
-                            <p onClick={() => { modal == true ? setModal(false) : setModal(true) }}>2월 17일 발행</p>
+                        <div className='list' key={i}>
+                            <h4 onClick={() => { modal == true ? setModal(false) : setModal(true)}}>{v} <span onClick={() => {
+                                let copyCount = [...count];
+                                
+                                copyCount[i] = copyCount[i] + 1;
+                                countUp(copyCount);
+                                console.log(`count : ${count} / copyCount : ${copyCount}`);
+                            }}>❤️</span> {count[i]}개</h4>
+                            <p onClick={()=> {setModalTitle(i)}}>2월 17일 발행</p>
                         </div>
                     )
                 })
             }
 
             {
-                modal == true ? <Modal /> : ''
+                modal == true ? <Modal title={title} setShirts={reName} setBlueColor={"blue"} setModalTitle={modalTitle} /> : ''
             }
         </div >
     );
 }
 
-function Modal() {
+
+function Modal(props) {
     return (
-        <div className="modal">
-            <h4>제목</h4>
+        <div className="modal" >
+            <h4>{props.title[props.modalTitle]}</h4>
             <p>날짜</p>
             <p>상세내용</p>
-        </div>
+        </div >
+
     )
 }
 
